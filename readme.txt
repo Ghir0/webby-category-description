@@ -19,7 +19,7 @@ Webby for WordPress: Category Description is a powerful plugin that allows you t
 * Generate category descriptions with AI in seconds
 * Support for WooCommerce product categories
 * Support for 10 different languages
-* Customizable description length (short, medium, long)
+* Customizable description length (ultra short, short, medium, long)
 * Customizable tone options (standard e-commerce, professional, friendly, personal)
 * Bulk generation for all product categories at once
 * Dedicated settings page for API configuration
@@ -82,9 +82,10 @@ Yes, the generated descriptions are inserted into the standard WordPress categor
 
 = What are the different length options? =
 
-* Short: 1-2 sentences, perfect for concise category descriptions
-* Medium: 2-3 sentences, balanced for most category pages
-* Long: 4-5 sentences, ideal for detailed category descriptions
+* Ultra Short: 3-4 words, perfect for menu items or tags
+* Short: 1 sentence, perfect for concise category descriptions
+* Medium: 2 sentences, balanced for most category pages
+* Long: 3 sentences, ideal for detailed category descriptions
 
 = What are the different tone options? =
 
@@ -115,7 +116,7 @@ Yes, your API key is stored securely in the WordPress database using WordPress's
 == Changelog ==
 
 = 0.3 =
-* Added customizable description length options (short, medium, long)
+* Added customizable description length options (ultra short, short, medium, long)
 * Added customizable tone options (standard, professional, friendly, personal)
 * Added bulk generation tool for WooCommerce product categories
 * Improved UI with better organized options
@@ -133,7 +134,7 @@ Yes, your API key is stored securely in the WordPress database using WordPress's
 == Upgrade Notice ==
 
 = 0.3 =
-This update adds customizable length and tone options, plus a bulk generation tool for WooCommerce product categories.
+This update adds customizable length options (including the new Ultra Short option) and tone options, plus a bulk generation tool for WooCommerce product categories.
 
 = 0.2 =
 This update adds support for WooCommerce product categories and fixes JavaScript issues.

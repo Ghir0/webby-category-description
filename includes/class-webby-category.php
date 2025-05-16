@@ -91,6 +91,7 @@ class Webby_Category {
                         <label style="margin-right: 10px;">
                             <span><?php esc_html_e( 'Length:', 'webby-category-description' ); ?></span>
                             <select id="webby-length-select" style="vertical-align: middle; min-width: 100px;">
+                                <option value="ultrashort"><?php esc_html_e( 'Ultra Short', 'webby-category-description' ); ?></option>
                                 <option value="short"><?php esc_html_e( 'Short', 'webby-category-description' ); ?></option>
                                 <option value="medium" selected><?php esc_html_e( 'Medium', 'webby-category-description' ); ?></option>
                                 <option value="long"><?php esc_html_e( 'Long', 'webby-category-description' ); ?></option>
@@ -152,6 +153,7 @@ class Webby_Category {
                     <label style="margin-right: 10px; display: inline-block; margin-bottom: 5px;">
                         <span><?php esc_html_e( 'Length:', 'webby-category-description' ); ?></span>
                         <select id="webby-length-select" style="vertical-align: middle; min-width: 100px;">
+                            <option value="ultrashort"><?php esc_html_e( 'Ultra Short', 'webby-category-description' ); ?></option>
                             <option value="short"><?php esc_html_e( 'Short', 'webby-category-description' ); ?></option>
                             <option value="medium" selected><?php esc_html_e( 'Medium', 'webby-category-description' ); ?></option>
                             <option value="long"><?php esc_html_e( 'Long', 'webby-category-description' ); ?></option>
@@ -470,6 +472,7 @@ class Webby_Category {
                     <label style="margin-right: 10px; display: inline-block; margin-bottom: 5px;">
                         <span><?php esc_html_e( 'Length:', 'webby-category-description' ); ?></span>
                         <select id="webby-bulk-length-select" style="vertical-align: middle; min-width: 100px;">
+                            <option value="ultrashort"><?php esc_html_e( 'Ultra Short', 'webby-category-description' ); ?></option>
                             <option value="short"><?php esc_html_e( 'Short', 'webby-category-description' ); ?></option>
                             <option value="medium" selected><?php esc_html_e( 'Medium', 'webby-category-description' ); ?></option>
                             <option value="long"><?php esc_html_e( 'Long', 'webby-category-description' ); ?></option>

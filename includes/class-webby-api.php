@@ -180,17 +180,20 @@ class Webby_API {
         // Determine length instructions
         $length_instructions = '';
         switch ( $length ) {
+            case 'ultrashort':
+                $length_instructions = '3-4 words';
+                break;
             case 'short':
-                $length_instructions = '1-2 sentences long';
+                $length_instructions = '1 sentences long';
                 break;
             case 'medium':
-                $length_instructions = '2-3 sentences long';
+                $length_instructions = '2 sentences long';
                 break;
             case 'long':
-                $length_instructions = '4-5 sentences long';
+                $length_instructions = '3 sentences long';
                 break;
             default:
-                $length_instructions = '2-3 sentences long';
+                $length_instructions = '1 sentences long';
         }
         
         // Determine tone instructions
