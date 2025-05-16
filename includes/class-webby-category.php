@@ -45,9 +45,11 @@ class Webby_Category {
         // WooCommerce product category support
         add_action( 'product_cat_edit_form_fields', array( $this, 'add_generate_button' ), 10, 2 );
         add_action( 'product_cat_add_form_fields', array( $this, 'add_generate_button_new' ), 10 );
+        add_action( 'product_cat_pre_add_form', array( $this, 'add_bulk_generate_button' ) );
         
         // Register AJAX handler
         add_action( 'wp_ajax_webby_generate_description', array( $this, 'ajax_generate_description' ) );
+        add_action( 'wp_ajax_webby_bulk_generate_descriptions', array( $this, 'ajax_bulk_generate_descriptions' ) );
         
         // Enqueue scripts and styles
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -76,11 +78,36 @@ class Webby_Category {
             <th scope="row"></th>
             <td>
                 <div id="webby-generate-container" style="margin-top: 10px;">
-                    <select id="webby-language-select" style="vertical-align: middle;">
-                        <?php foreach ( $languages as $code => $name ) : ?>
-                            <option value="<?php echo esc_attr( $code ); ?>" <?php selected( $default_language, $code ); ?>><?php echo esc_html( $name ); ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                    <div style="margin-bottom: 10px;">
+                        <label style="margin-right: 10px;">
+                            <span><?php esc_html_e( 'Language:', 'webby-category-description' ); ?></span>
+                            <select id="webby-language-select" style="vertical-align: middle; min-width: 120px;">
+                                <?php foreach ( $languages as $code => $name ) : ?>
+                                    <option value="<?php echo esc_attr( $code ); ?>" <?php selected( $default_language, $code ); ?>><?php echo esc_html( $name ); ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </label>
+                        
+                        <label style="margin-right: 10px;">
+                            <span><?php esc_html_e( 'Length:', 'webby-category-description' ); ?></span>
+                            <select id="webby-length-select" style="vertical-align: middle; min-width: 100px;">
+                                <option value="short"><?php esc_html_e( 'Short', 'webby-category-description' ); ?></option>
+                                <option value="medium" selected><?php esc_html_e( 'Medium', 'webby-category-description' ); ?></option>
+                                <option value="long"><?php esc_html_e( 'Long', 'webby-category-description' ); ?></option>
+                            </select>
+                        </label>
+                        
+                        <label>
+                            <span><?php esc_html_e( 'Tone:', 'webby-category-description' ); ?></span>
+                            <select id="webby-tone-select" style="vertical-align: middle; min-width: 150px;">
+                                <option value="standard" selected><?php esc_html_e( 'Standard E-commerce', 'webby-category-description' ); ?></option>
+                                <option value="professional"><?php esc_html_e( 'Professional', 'webby-category-description' ); ?></option>
+                                <option value="friendly"><?php esc_html_e( 'Friendly', 'webby-category-description' ); ?></option>
+                                <option value="personal"><?php esc_html_e( 'Personal', 'webby-category-description' ); ?></option>
+                            </select>
+                        </label>
+                    </div>
+                    
                     <button type="button" id="webby-generate-button" class="button button-secondary" data-term-id="<?php echo esc_attr( $tag->term_id ); ?>" data-taxonomy="<?php echo esc_attr( $taxonomy ); ?>">
                         <?php esc_html_e( 'Generate Description with AI', 'webby-category-description' ); ?>
                     </button>
@@ -112,11 +139,36 @@ class Webby_Category {
         ?>
         <div class="form-field term-description-wrap">
             <div id="webby-generate-container" style="margin-top: 10px;">
-                <select id="webby-language-select" style="vertical-align: middle;">
-                    <?php foreach ( $languages as $code => $name ) : ?>
-                        <option value="<?php echo esc_attr( $code ); ?>" <?php selected( $default_language, $code ); ?>><?php echo esc_html( $name ); ?></option>
-                    <?php endforeach; ?>
-                </select>
+                <div style="margin-bottom: 10px;">
+                    <label style="margin-right: 10px; display: inline-block; margin-bottom: 5px;">
+                        <span><?php esc_html_e( 'Language:', 'webby-category-description' ); ?></span>
+                        <select id="webby-language-select" style="vertical-align: middle; min-width: 120px;">
+                            <?php foreach ( $languages as $code => $name ) : ?>
+                                <option value="<?php echo esc_attr( $code ); ?>" <?php selected( $default_language, $code ); ?>><?php echo esc_html( $name ); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </label>
+                    
+                    <label style="margin-right: 10px; display: inline-block; margin-bottom: 5px;">
+                        <span><?php esc_html_e( 'Length:', 'webby-category-description' ); ?></span>
+                        <select id="webby-length-select" style="vertical-align: middle; min-width: 100px;">
+                            <option value="short"><?php esc_html_e( 'Short', 'webby-category-description' ); ?></option>
+                            <option value="medium" selected><?php esc_html_e( 'Medium', 'webby-category-description' ); ?></option>
+                            <option value="long"><?php esc_html_e( 'Long', 'webby-category-description' ); ?></option>
+                        </select>
+                    </label>
+                    
+                    <label style="display: inline-block; margin-bottom: 5px;">
+                        <span><?php esc_html_e( 'Tone:', 'webby-category-description' ); ?></span>
+                        <select id="webby-tone-select" style="vertical-align: middle; min-width: 150px;">
+                            <option value="standard" selected><?php esc_html_e( 'Standard E-commerce', 'webby-category-description' ); ?></option>
+                            <option value="professional"><?php esc_html_e( 'Professional', 'webby-category-description' ); ?></option>
+                            <option value="friendly"><?php esc_html_e( 'Friendly', 'webby-category-description' ); ?></option>
+                            <option value="personal"><?php esc_html_e( 'Personal', 'webby-category-description' ); ?></option>
+                        </select>
+                    </label>
+                </div>
+                
                 <button type="button" id="webby-generate-button" class="button button-secondary" data-taxonomy="<?php echo esc_attr( $taxonomy ); ?>">
                     <?php esc_html_e( 'Generate Description with AI', 'webby-category-description' ); ?>
                 </button>
@@ -152,6 +204,8 @@ class Webby_Category {
         $name = isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : '';
         $language = isset( $_POST['language'] ) ? sanitize_text_field( $_POST['language'] ) : 'en';
         $taxonomy = isset( $_POST['taxonomy'] ) ? sanitize_key( $_POST['taxonomy'] ) : 'category';
+        $length = isset( $_POST['length'] ) ? sanitize_text_field( $_POST['length'] ) : 'medium';
+        $tone = isset( $_POST['tone'] ) ? sanitize_text_field( $_POST['tone'] ) : 'standard';
 
         // Validate parameters
         if ( empty( $name ) ) {
@@ -173,7 +227,7 @@ class Webby_Category {
         }
 
         // Generate description
-        $result = $this->api->generate_description( $name, $language, $parent_name );
+        $result = $this->api->generate_description( $name, $language, $parent_name, $length, $tone );
 
         if ( ! $result['success'] ) {
             wp_send_json_error( array(
@@ -184,6 +238,101 @@ class Webby_Category {
         wp_send_json_success( array(
             'description' => $result['description'],
         ) );
+    }
+
+    /**
+     * AJAX handler for bulk generating descriptions.
+     *
+     * @since    0.2
+     */
+    public function ajax_bulk_generate_descriptions() {
+        // Check nonce
+        if ( ! check_ajax_referer( 'webby_generate_description', 'nonce', false ) ) {
+            wp_send_json_error( array(
+                'message' => __( 'Security check failed.', 'webby-category-description' ),
+            ) );
+        }
+
+        // Check user capabilities
+        if ( ! current_user_can( 'manage_categories' ) ) {
+            wp_send_json_error( array(
+                'message' => __( 'You do not have permission to perform this action.', 'webby-category-description' ),
+            ) );
+        }
+
+        // Get parameters
+        $language = isset( $_POST['language'] ) ? sanitize_text_field( $_POST['language'] ) : 'en';
+        $taxonomy = isset( $_POST['taxonomy'] ) ? sanitize_key( $_POST['taxonomy'] ) : 'product_cat';
+        $length = isset( $_POST['length'] ) ? sanitize_text_field( $_POST['length'] ) : 'medium';
+        $tone = isset( $_POST['tone'] ) ? sanitize_text_field( $_POST['tone'] ) : 'standard';
+        $term_id = isset( $_POST['term_id'] ) ? intval( $_POST['term_id'] ) : 0;
+
+        // Get all product categories or a specific one if term_id is provided
+        $args = array(
+            'taxonomy' => $taxonomy,
+            'hide_empty' => false,
+        );
+
+        if ( $term_id > 0 ) {
+            $args['include'] = array( $term_id );
+        }
+
+        $terms = get_terms( $args );
+
+        if ( is_wp_error( $terms ) ) {
+            wp_send_json_error( array(
+                'message' => $terms->get_error_message(),
+            ) );
+        }
+
+        // If no term_id was provided, this is the initial request
+        if ( $term_id === 0 ) {
+            wp_send_json_success( array(
+                'total' => count( $terms ),
+                'message' => sprintf( __( 'Found %d categories to process.', 'webby-category-description' ), count( $terms ) ),
+            ) );
+        }
+
+        // Process the current term
+        if ( ! empty( $terms ) ) {
+            $term = $terms[0];
+            
+            // Get parent category name if applicable
+            $parent_name = '';
+            if ( $term->parent > 0 ) {
+                $parent_term = get_term( $term->parent, $taxonomy );
+                if ( $parent_term && ! is_wp_error( $parent_term ) ) {
+                    $parent_name = $parent_term->name;
+                }
+            }
+
+            // Generate description
+            $result = $this->api->generate_description( $term->name, $language, $parent_name, $length, $tone );
+
+            if ( $result['success'] ) {
+                // Update the term description
+                wp_update_term( $term->term_id, $taxonomy, array(
+                    'description' => $result['description'],
+                ) );
+
+                wp_send_json_success( array(
+                    'term_id' => $term->term_id,
+                    'name' => $term->name,
+                    'description' => $result['description'],
+                    'message' => sprintf( __( 'Generated description for "%s".', 'webby-category-description' ), $term->name ),
+                ) );
+            } else {
+                wp_send_json_error( array(
+                    'term_id' => $term->term_id,
+                    'name' => $term->name,
+                    'message' => $result['message'],
+                ) );
+            }
+        } else {
+            wp_send_json_error( array(
+                'message' => __( 'No categories found.', 'webby-category-description' ),
+            ) );
+        }
     }
 
     /**
@@ -225,6 +374,9 @@ class Webby_Category {
                 'error'      => __( 'Error: ', 'webby-category-description' ),
                 'apiKeyMissing' => __( 'OpenAI API key is not configured. Please set it in the plugin settings.', 'webby-category-description' ),
                 'apiKeyConfigured' => $this->api->is_api_key_set(),
+                'bulkGenerating' => __( 'Generating descriptions...', 'webby-category-description' ),
+                'bulkSuccess' => __( 'All descriptions generated successfully!', 'webby-category-description' ),
+                'bulkProcessing' => __( 'Processing category %1$s of %2$s: %3$s', 'webby-category-description' ),
             )
         );
 
@@ -235,6 +387,14 @@ class Webby_Category {
                 font-weight: bold;
             }
             #webby-generate-message.error {
+                color: red;
+                font-weight: bold;
+            }
+            #webby-bulk-message.success {
+                color: green;
+                font-weight: bold;
+            }
+            #webby-bulk-message.error {
                 color: red;
                 font-weight: bold;
             }
@@ -270,6 +430,74 @@ class Webby_Category {
                     <span id="webby-prominent-spinner" class="spinner" style="float: none; margin-left: 10px;"></span>
                 </div>
                 <div id="webby-prominent-message" style="margin-top: 10px; font-weight: bold;"></div>
+            </div>
+        </div>
+        <?php
+    }
+
+    /**
+     * Add a bulk generate button to the product categories page.
+     *
+     * @since    0.2
+     */
+    public function add_bulk_generate_button() {
+        // Only show on product categories page
+        if ( ! isset( $_GET['taxonomy'] ) || 'product_cat' !== $_GET['taxonomy'] ) {
+            return;
+        }
+
+        // Get the default language
+        $default_language = get_option( 'webby_default_language', 'en' );
+
+        // Get available languages
+        $languages = $this->get_available_languages();
+        ?>
+        <div class="form-wrap">
+            <div id="webby-bulk-generate-container" style="margin: 15px 0; padding: 15px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 4px;">
+                <h3 style="margin-top: 0;"><?php esc_html_e( 'Generate All Product Category Descriptions with AI', 'webby-category-description' ); ?></h3>
+                <p><?php esc_html_e( 'Use OpenAI to automatically generate descriptions for all product categories.', 'webby-category-description' ); ?></p>
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="margin-right: 10px; display: inline-block; margin-bottom: 5px;">
+                        <span><?php esc_html_e( 'Language:', 'webby-category-description' ); ?></span>
+                        <select id="webby-bulk-language-select" style="vertical-align: middle; min-width: 120px;">
+                            <?php foreach ( $languages as $code => $name ) : ?>
+                                <option value="<?php echo esc_attr( $code ); ?>" <?php selected( $default_language, $code ); ?>><?php echo esc_html( $name ); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </label>
+                    
+                    <label style="margin-right: 10px; display: inline-block; margin-bottom: 5px;">
+                        <span><?php esc_html_e( 'Length:', 'webby-category-description' ); ?></span>
+                        <select id="webby-bulk-length-select" style="vertical-align: middle; min-width: 100px;">
+                            <option value="short"><?php esc_html_e( 'Short', 'webby-category-description' ); ?></option>
+                            <option value="medium" selected><?php esc_html_e( 'Medium', 'webby-category-description' ); ?></option>
+                            <option value="long"><?php esc_html_e( 'Long', 'webby-category-description' ); ?></option>
+                        </select>
+                    </label>
+                    
+                    <label style="display: inline-block; margin-bottom: 5px;">
+                        <span><?php esc_html_e( 'Tone:', 'webby-category-description' ); ?></span>
+                        <select id="webby-bulk-tone-select" style="vertical-align: middle; min-width: 150px;">
+                            <option value="standard" selected><?php esc_html_e( 'Standard E-commerce', 'webby-category-description' ); ?></option>
+                            <option value="professional"><?php esc_html_e( 'Professional', 'webby-category-description' ); ?></option>
+                            <option value="friendly"><?php esc_html_e( 'Friendly', 'webby-category-description' ); ?></option>
+                            <option value="personal"><?php esc_html_e( 'Personal', 'webby-category-description' ); ?></option>
+                        </select>
+                    </label>
+                </div>
+                
+                <button type="button" id="webby-bulk-generate-button" class="button button-primary" data-taxonomy="product_cat">
+                    <?php esc_html_e( 'Generate All Descriptions', 'webby-category-description' ); ?>
+                </button>
+                <span id="webby-bulk-spinner" class="spinner" style="float: none; margin-left: 10px;"></span>
+                <div id="webby-bulk-progress" style="margin-top: 10px; display: none;">
+                    <div class="progress-bar" style="height: 20px; background-color: #f1f1f1; border-radius: 3px; overflow: hidden;">
+                        <div class="progress-bar-fill" style="height: 100%; width: 0%; background-color: #0073aa; transition: width 0.3s;"></div>
+                    </div>
+                    <div class="progress-text" style="margin-top: 5px; font-weight: bold;"></div>
+                </div>
+                <div id="webby-bulk-message" style="margin-top: 10px; font-weight: bold;"></div>
             </div>
         </div>
         <?php

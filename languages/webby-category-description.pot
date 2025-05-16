@@ -80,7 +80,7 @@ msgid "Unknown error occurred."
 msgstr ""
 
 #: includes/class-webby-category.php:63
-#: includes/class-webby-category.php:97
+#: includes/class-webby-category.php:107
 msgid "Generate Description with AI"
 msgstr ""
 
@@ -110,6 +110,30 @@ msgstr ""
 
 #: includes/class-webby-category.php:207
 msgid "OpenAI API key is not configured. Please set it in the plugin settings."
+msgstr ""
+
+#: includes/class-webby-category.php:209
+msgid "Generating descriptions..."
+msgstr ""
+
+#: includes/class-webby-category.php:210
+msgid "All descriptions generated successfully!"
+msgstr ""
+
+#: includes/class-webby-category.php:211
+msgid "Processing category %1$s of %2$s: %3$s"
+msgstr ""
+
+#: includes/class-webby-category.php:181
+msgid "Found %d categories to process."
+msgstr ""
+
+#: includes/class-webby-category.php:202
+msgid "Generated description for \"%s\"."
+msgstr ""
+
+#: includes/class-webby-category.php:212
+msgid "No categories found."
 msgstr ""
 
 #: includes/class-webby-category.php:235
@@ -162,4 +186,73 @@ msgstr ""
 
 #: includes/class-webby-category.php:282
 msgid "Generate Description"
+msgstr ""
+
+#: includes/class-webby-category.php:350
+msgid "Generate All Product Category Descriptions with AI"
+msgstr ""
+
+#: includes/class-webby-category.php:351
+msgid "Use OpenAI to automatically generate descriptions for all product categories."
+msgstr ""
+
+#: includes/class-webby-category.php:399
+msgid "Generate All Descriptions"
+msgstr ""
+
+#: includes/class-webby-category.php:67
+#: includes/class-webby-category.php:111
+#: includes/class-webby-category.php:355
+msgid "Language:"
+msgstr ""
+
+#: includes/class-webby-category.php:77
+#: includes/class-webby-category.php:121
+#: includes/class-webby-category.php:365
+msgid "Length:"
+msgstr ""
+
+#: includes/class-webby-category.php:79
+#: includes/class-webby-category.php:123
+msgid "Short"
+msgstr ""
+
+#: includes/class-webby-category.php:80
+#: includes/class-webby-category.php:124
+msgid "Medium"
+msgstr ""
+
+#: includes/class-webby-category.php:81
+#: includes/class-webby-category.php:125
+msgid "Long"
+msgstr ""
+
+#: includes/class-webby-category.php:87
+#: includes/class-webby-category.php:131
+#: includes/class-webby-category.php:375
+msgid "Tone:"
+msgstr ""
+
+#: includes/class-webby-category.php:89
+#: includes/class-webby-category.php:133
+#: includes/class-webby-category.php:377
+msgid "Standard E-commerce"
+msgstr ""
+
+#: includes/class-webby-category.php:90
+#: includes/class-webby-category.php:134
+#: includes/class-webby-category.php:378
+msgid "Professional"
+msgstr ""
+
+#: includes/class-webby-category.php:91
+#: includes/class-webby-category.php:135
+#: includes/class-webby-category.php:379
+msgid "Friendly"
+msgstr ""
+
+#: includes/class-webby-category.php:92
+#: includes/class-webby-category.php:136
+#: includes/class-webby-category.php:380
+msgid "Personal"
 msgstr ""

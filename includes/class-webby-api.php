@@ -62,9 +62,11 @@ class Webby_API {
      * @param    string    $category_name    The category name.
      * @param    string    $language         The language code.
      * @param    string    $parent_name      The parent category name (optional).
+     * @param    string    $length           The description length (short, medium, long).
+     * @param    string    $tone             The description tone (standard, professional, friendly, personal).
      * @return   array                       The response array with success/error info.
      */
-    public function generate_description( $category_name, $language = 'en', $parent_name = '' ) {
+    public function generate_description( $category_name, $language = 'en', $parent_name = '', $length = 'medium', $tone = 'standard' ) {
         // Check if API key is set
         if ( ! $this->is_api_key_set() ) {
             return array(
@@ -73,8 +75,8 @@ class Webby_API {
             );
         }
 
-        // Prepare the prompt based on language and parent category
-        $prompt = $this->prepare_prompt( $category_name, $language, $parent_name );
+        // Prepare the prompt based on language, parent category, length, and tone
+        $prompt = $this->prepare_prompt( $category_name, $language, $parent_name, $length, $tone );
 
         // Prepare the request arguments
         $args = array(
@@ -139,9 +141,11 @@ class Webby_API {
      * @param    string    $category_name    The category name.
      * @param    string    $language         The language code.
      * @param    string    $parent_name      The parent category name (optional).
+     * @param    string    $length           The description length (short, medium, long).
+     * @param    string    $tone             The description tone (standard, professional, friendly, personal).
      * @return   string                      The prepared prompt.
      */
-    private function prepare_prompt( $category_name, $language = 'en', $parent_name = '' ) {
+    private function prepare_prompt( $category_name, $language = 'en', $parent_name = '', $length = 'medium', $tone = 'standard' ) {
         // Get the language name
         $language_names = array(
             'en' => 'English',
@@ -173,8 +177,45 @@ class Webby_API {
             );
         }
 
+        // Determine length instructions
+        $length_instructions = '';
+        switch ( $length ) {
+            case 'short':
+                $length_instructions = '1-2 sentences long';
+                break;
+            case 'medium':
+                $length_instructions = '2-3 sentences long';
+                break;
+            case 'long':
+                $length_instructions = '4-5 sentences long';
+                break;
+            default:
+                $length_instructions = '2-3 sentences long';
+        }
+        
+        // Determine tone instructions
+        $tone_instructions = '';
+        switch ( $tone ) {
+            case 'professional':
+                $tone_instructions = 'using a professional and formal tone';
+                break;
+            case 'friendly':
+                $tone_instructions = 'using a friendly and approachable tone';
+                break;
+            case 'personal':
+                $tone_instructions = 'using a personal and conversational tone';
+                break;
+            case 'standard':
+            default:
+                $tone_instructions = 'using a standard e-commerce tone';
+        }
+        
         // Additional instructions
-        $prompt .= ' The description should be 2-3 sentences long, highlight the key aspects of this category, and encourage users to explore it. Do not use HTML tags or formatting.';
+        $prompt .= sprintf(
+            ' The description should be %s, %s, highlight the key aspects of this category, and encourage users to explore it. Do not use HTML tags or formatting.',
+            $length_instructions,
+            $tone_instructions
+        );
 
         return $prompt;
     }

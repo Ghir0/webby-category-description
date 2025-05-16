@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Webby for WordPress: Category Description
  * Plugin URI: https://www.webemento.com/webby-category-description
- * Description: Generate category and product category descriptions using OpenAI API.
- * Version: 0.2
+ * Description: Generate category and product category descriptions using OpenAI API with customizable length and tone options.
+ * Version: 0.3
  * Author: Michael Tamanti
  * Author URI: https://www.webemento.com
  * License: GPL-2.0+
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define plugin constants
-define( 'WEBBY_CATEGORY_VERSION', '0.2' );
+define( 'WEBBY_CATEGORY_VERSION', '0.3' );
 define( 'WEBBY_CATEGORY_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WEBBY_CATEGORY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WEBBY_CATEGORY_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
