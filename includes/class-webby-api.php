@@ -164,7 +164,7 @@ class Webby_API {
 
         // Base prompt
         $prompt = sprintf(
-            'Write a concise, engaging, and SEO-friendly description for a category named "%s" in %s.',
+            'Write a concise, engaging and relevant description for a category named "%s" in %s.',
             $category_name,
             $language_name
         );
