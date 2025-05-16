@@ -1,0 +1,88 @@
+/**
+ * Admin styles for Webby Category Description plugin
+ * 
+ * @since      0.2
+ * @package    Webby_Category_Description
+ * @subpackage Webby_Category_Description/admin/css
+ * @author     Michael Tamanti
+ */
+
+.wrap h1 {
+    margin-bottom: 20px;
+}
+
+.form-table th {
+    width: 200px;
+}
+
+.webby-api-status {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.webby-api-status.valid {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.webby-api-status.invalid {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.webby-api-status.checking {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* Settings page styling */
+.webby-settings-container {
+    max-width: 800px;
+}
+
+.webby-settings-container .description {
+    font-style: italic;
+    color: #666;
+}
+
+/* API key field styling */
+#webby_openai_api_key {
+    width: 350px;
+}
+
+/* Language dropdown styling */
+#webby_default_language {
+    min-width: 200px;
+}
+
+/* Prominent generate button container */
+#webby-prominent-generate-container {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#webby-prominent-generate-container h3 {
+    margin-top: 0;
+    color: #23282d;
+}
+
+#webby-prominent-message.success {
+    color: #155724;
+    font-weight: bold;
+}
+
+#webby-prominent-message.error {
+    color: #721c24;
+    font-weight: bold;
+}
+
+#webby-prominent-language-select {
+    min-width: 150px;
+}

@@ -1,0 +1,165 @@
+# Copyright (C) 2025 Michael Tamanti
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Webby for WordPress: Category Description 0.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/webby-category-description\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-05-16T14:33:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.0\n"
+"X-Domain: webby-category-description\n"
+
+#. Plugin Name of the plugin
+msgid "Webby for WordPress: Category Description"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://www.webemento.com/webby-category-description"
+msgstr ""
+
+#. Description of the plugin
+msgid "Generate category and product category descriptions using OpenAI API."
+msgstr ""
+
+#. Author of the plugin
+msgid "Michael Tamanti"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.webemento.com"
+msgstr ""
+
+#: admin/class-webby-admin.php:44
+#: admin/class-webby-admin.php:45
+msgid "Webby Category Description"
+msgstr ""
+
+#: admin/class-webby-admin.php:45
+msgid "Webby Category"
+msgstr ""
+
+#: admin/class-webby-admin.php:93
+msgid "OpenAI API Settings"
+msgstr ""
+
+#: admin/class-webby-admin.php:101
+msgid "OpenAI API Key"
+msgstr ""
+
+#: admin/class-webby-admin.php:109
+msgid "Default Language"
+msgstr ""
+
+#: admin/class-webby-admin.php:137
+msgid "Enter your OpenAI API key and default settings below."
+msgstr ""
+
+#: admin/class-webby-admin.php:149
+msgid "Enter your OpenAI API key. You can get one from https://platform.openai.com/api-keys"
+msgstr ""
+
+#: admin/class-webby-admin.php:175
+msgid "Select the default language for generated descriptions."
+msgstr ""
+
+#: admin/class-webby-admin.php:204
+msgid "Save Settings"
+msgstr ""
+
+#: includes/class-webby-api.php:79
+msgid "OpenAI API key is not set. Please configure it in the plugin settings."
+msgstr ""
+
+#: includes/class-webby-api.php:124
+msgid "Unknown error occurred."
+msgstr ""
+
+#: includes/class-webby-category.php:63
+#: includes/class-webby-category.php:97
+msgid "Generate Description with AI"
+msgstr ""
+
+#: includes/class-webby-category.php:123
+msgid "Security check failed."
+msgstr ""
+
+#: includes/class-webby-category.php:130
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: includes/class-webby-category.php:143
+msgid "Category name is required."
+msgstr ""
+
+#: includes/class-webby-category.php:204
+msgid "Generating..."
+msgstr ""
+
+#: includes/class-webby-category.php:205
+msgid "Description generated successfully!"
+msgstr ""
+
+#: includes/class-webby-category.php:206
+msgid "Error: "
+msgstr ""
+
+#: includes/class-webby-category.php:207
+msgid "OpenAI API key is not configured. Please set it in the plugin settings."
+msgstr ""
+
+#: includes/class-webby-category.php:235
+msgid "English"
+msgstr ""
+
+#: includes/class-webby-category.php:236
+msgid "Spanish"
+msgstr ""
+
+#: includes/class-webby-category.php:237
+msgid "French"
+msgstr ""
+
+#: includes/class-webby-category.php:238
+msgid "German"
+msgstr ""
+
+#: includes/class-webby-category.php:239
+msgid "Italian"
+msgstr ""
+
+#: includes/class-webby-category.php:240
+msgid "Portuguese"
+msgstr ""
+
+#: includes/class-webby-category.php:241
+msgid "Russian"
+msgstr ""
+
+#: includes/class-webby-category.php:242
+msgid "Chinese"
+msgstr ""
+
+#: includes/class-webby-category.php:243
+msgid "Japanese"
+msgstr ""
+
+#: includes/class-webby-category.php:244
+msgid "Korean"
+msgstr ""
+
+#: includes/class-webby-category.php:272
+msgid "Generate Category Description with AI"
+msgstr ""
+
+#: includes/class-webby-category.php:273
+msgid "Use OpenAI to automatically generate a description for this category."
+msgstr ""
+
+#: includes/class-webby-category.php:282
+msgid "Generate Description"
+msgstr ""
