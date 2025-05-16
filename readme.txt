@@ -1,6 +1,6 @@
 === Webby for WordPress: Category Description ===
 Contributors: michaeltamanti, webbyai
-Tags: openai, ai, category, description, gpt, automation
+Tags: openai, ai, category, description, gpt, automation, woocommerce, product categories
 Requires at least: 5.0
 Tested up to: 6.4
 Stable tag: 0.2
@@ -28,7 +28,7 @@ Webby for WordPress: Category Description is a powerful plugin that allows you t
 = How It Works =
 
 1. Configure your OpenAI API key in the plugin settings
-2. Go to any category edit page
+2. Go to any category or product category edit page
 3. Select your preferred language
 4. Click the "Generate Description with AI" button
 5. The AI-generated description will be automatically inserted into the description field
@@ -95,4 +95,4 @@ Yes, your API key is stored securely in the WordPress database using WordPress's
 == Upgrade Notice ==
 
 = 0.2 =
-This update adds a more prominent generate button at the top of the category edit form and fixes JavaScript issues.
+This update adds support for WooCommerce product categories and fixes JavaScript issues.
