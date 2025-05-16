@@ -164,7 +164,7 @@ class Webby_API {
 
         // Base prompt
         $prompt = sprintf(
-            'Write a concise, engaging and relevant description for a category named "%s" in %s.',
+            'Write a concise and relevant description for a category named "%s" in %s.',
             $category_name,
             $language_name
         );
@@ -221,7 +221,7 @@ class Webby_API {
         
         // Additional instructions
         $prompt .= sprintf(
-            ' The description should be %s, %s, highlight the key aspects of this category, and encourage users to explore it. Do not use HTML tags or formatting.',
+            ' The description should be %s, %s, highlight the key aspects of this category. Do not use HTML tags or formatting.',
             $length_instructions,
             $tone_instructions
         );
