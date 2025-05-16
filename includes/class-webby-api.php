@@ -251,7 +251,7 @@ class Webby_API {
                 'Content-Type'  => 'application/json',
             ),
             'body'    => wp_json_encode( array(
-                'model'       => 'gpt-3.5-turbo',
+                'model'       => 'gpt-4o-mini',
                 'messages'    => array(
                     array(
                         'role'    => 'user',
