@@ -76,6 +76,16 @@ class Webby_Admin {
             )
         );
 
+        register_setting(
+            'webby_category_settings',
+            'webby_prompt_context',
+            array(
+                'type'              => 'string',
+                'sanitize_callback' => 'sanitize_textarea_field',
+                'default'           => '',
+            )
+        );
+
         // Add settings section
         add_settings_section(
             'webby_category_section',
@@ -97,6 +107,14 @@ class Webby_Admin {
             'webby_default_language',
             __( 'Default Language', 'webby-category-description' ),
             array( $this, 'default_language_field_callback' ),
+            'webby-category-description',
+            'webby_category_section'
+        );
+
+        add_settings_field(
+            'webby_prompt_context',
+            __( 'Additional Prompt Context', 'webby-category-description' ),
+            array( $this, 'prompt_context_field_callback' ),
             'webby-category-description',
             'webby_category_section'
         );
@@ -162,6 +180,19 @@ class Webby_Admin {
             <?php endforeach; ?>
         </select>
         <p class="description"><?php esc_html_e( 'Select the default language for generated descriptions.', 'webby-category-description' ); ?></p>
+        <?php
+    }
+
+    /**
+     * Prompt context field callback.
+     *
+     * @since    0.3
+     */
+    public function prompt_context_field_callback() {
+        $prompt_context = get_option( 'webby_prompt_context', '' );
+        ?>
+        <textarea id="webby_prompt_context" name="webby_prompt_context" rows="5" cols="50" class="large-text"><?php echo esc_textarea( $prompt_context ); ?></textarea>
+        <p class="description"><?php esc_html_e( 'Add additional context to customize the AI prompt. This information will be included in every prompt to provide better context for generating descriptions.', 'webby-category-description' ); ?></p>
         <?php
     }
 

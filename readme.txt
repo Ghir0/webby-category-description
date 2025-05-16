@@ -21,6 +21,7 @@ Webby for WordPress: Category Description is a powerful plugin that allows you t
 * Support for 10 different languages
 * Customizable description length (ultra short, short, medium, long)
 * Customizable tone options (standard e-commerce, professional, friendly, personal)
+* Additional prompt context customization for better results
 * Bulk generation for all product categories at once
 * Dedicated settings page for API configuration
 * Works with both new and existing categories
@@ -102,6 +103,10 @@ Yes! For WooCommerce stores, you can use the bulk generation tool on the Product
 
 The plugin works with the default WordPress category taxonomy and WooCommerce product categories. Support for additional custom taxonomies may be added in future versions.
 
+= What is the Additional Prompt Context feature? =
+
+The Additional Prompt Context feature allows you to add custom instructions or context to the AI prompt. This is useful for providing specific information about your store, brand voice, or industry that should be considered when generating descriptions. For example, you could add "This is a luxury fashion store targeting young professionals" or "Our brand focuses on eco-friendly and sustainable products" to help the AI generate more relevant descriptions.
+
 = Is my OpenAI API key secure? =
 
 Yes, your API key is stored securely in the WordPress database using WordPress's built-in options API.
@@ -118,6 +123,7 @@ Yes, your API key is stored securely in the WordPress database using WordPress's
 = 0.3 =
 * Added customizable description length options (ultra short, short, medium, long)
 * Added customizable tone options (standard, professional, friendly, personal)
+* Added additional prompt context customization in settings
 * Added bulk generation tool for WooCommerce product categories
 * Improved UI with better organized options
 * Updated translations and documentation
@@ -134,7 +140,7 @@ Yes, your API key is stored securely in the WordPress database using WordPress's
 == Upgrade Notice ==
 
 = 0.3 =
-This update adds customizable length options (including the new Ultra Short option) and tone options, plus a bulk generation tool for WooCommerce product categories.
+This update adds customizable length options (including the new Ultra Short option), tone options, additional prompt context customization, plus a bulk generation tool for WooCommerce product categories.
 
 = 0.2 =
 This update adds support for WooCommerce product categories and fixes JavaScript issues.

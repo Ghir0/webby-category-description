@@ -55,6 +55,10 @@ msgstr ""
 msgid "Default Language"
 msgstr ""
 
+#: admin/class-webby-admin.php:118
+msgid "Additional Prompt Context"
+msgstr ""
+
 #: admin/class-webby-admin.php:137
 msgid "Enter your OpenAI API key and default settings below."
 msgstr ""
@@ -65,6 +69,10 @@ msgstr ""
 
 #: admin/class-webby-admin.php:175
 msgid "Select the default language for generated descriptions."
+msgstr ""
+
+#: admin/class-webby-admin.php:192
+msgid "Add additional context to customize the AI prompt. This information will be included in every prompt to provide better context for generating descriptions."
 msgstr ""
 
 #: admin/class-webby-admin.php:204

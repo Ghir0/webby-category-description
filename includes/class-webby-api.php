@@ -177,6 +177,12 @@ class Webby_API {
             );
         }
 
+        // Get additional context from settings
+        $additional_context = get_option( 'webby_prompt_context', '' );
+        if ( ! empty( $additional_context ) ) {
+            $prompt .= ' ' . $additional_context;
+        }
+
         // Determine length instructions
         $length_instructions = '';
         switch ( $length ) {

@@ -30,6 +30,7 @@ function activate_webby_category_description() {
     // Add default options
     add_option( 'webby_openai_api_key', '' );
     add_option( 'webby_default_language', 'en' );
+    add_option( 'webby_prompt_context', '' );
 }
 
 /**
